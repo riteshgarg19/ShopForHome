@@ -35,7 +35,7 @@
               <th class="text-center py-3 px-4" style="width: 120px">
                 Quantity
               </th>
-              <th class="text-right py-3 px-4" style="width: 100px">Discount</th>
+              
               <th
                 class="text-center align-middle py-3 px-0"
                 style="width: 40px"
@@ -74,18 +74,17 @@
                   type="text"
                   class="form-control text-center"
                   value="{{ cart.quantity }}"
+                  (change)="UpdateQuantity(cart.id, $any($event).target.value)"
                 />
               </td>
-              <td class="text-right font-weight-semibold align-middle p-4">
-                {{ cart.discount_amt }}
-              </td>
+              
               <td class="text-center align-middle px-0">
                 <a
                   class="shop-tooltip close float-none text-danger"
                   title=""
                   (click)="DeleteItem(cart.id)"
                   data-original-title="Remove"
-                  >×</a
+                  ></a
                 >
               </td>
             </tr>
@@ -107,6 +106,8 @@
         </div>
       </div>
 
+      
+
       <div class="float-right">
         <button
           type="button"
@@ -122,6 +123,15 @@
         >
           Checkout
         </button>
+        <select [(ngModel)]="selectedCoupon" name="Coupon" style="max-width:10%;" class="form-control font-weight-bold mb-3" aria-placeholder="Select Coupon">
+          <option class="font-weight-bold">Select Coupon </option>
+          <option *ngFor="let dep of coupon" class="font-weight-bold">
+            {{dep.id}}
+          </option>
+        </select>
+      
+        <h5 *ngIf="!selectedCoupon" class="font-weight-bold">Total: {{TotalPrice}} </h5>
+        <h5 *ngIf="selectedCoupon" class="font-weight-bold">Total: {{TotalPrice-TotalPrice*0.2 }}</h5>
       
       </div>
     </div>

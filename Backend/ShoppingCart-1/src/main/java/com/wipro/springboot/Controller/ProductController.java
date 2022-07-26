@@ -23,6 +23,9 @@ public class ProductController {
     public List<Product> list() {
         return service.listAll();
     }
+    
+    
+    
     @CrossOrigin("http://localhost:4200")
     @GetMapping("/products/{id}")
     public ResponseEntity<Product> get(@PathVariable Integer id) {

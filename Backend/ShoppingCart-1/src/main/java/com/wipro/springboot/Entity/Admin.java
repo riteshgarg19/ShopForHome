@@ -1,11 +1,12 @@
 package com.wipro.springboot.Entity;
 
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
- 
+import javax.persistence.Table;
+@Table(name = "admin")
 @Entity
 public class Admin {
     private Integer id;

@@ -13,6 +13,7 @@ import { ViewWishlistComponent } from './view-wishlist/view-wishlist.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminComponent } from './admin/admin.component';
 import { FormsModule } from '@angular/forms';
+import { DiscountComponent } from './discount/discount.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { FormsModule } from '@angular/forms';
     LoginComponent,
     ViewCartComponent,
     ViewWishlistComponent,
-    AdminComponent
+    AdminComponent,
+    DiscountComponent
   ],
   imports: [
     BrowserModule,

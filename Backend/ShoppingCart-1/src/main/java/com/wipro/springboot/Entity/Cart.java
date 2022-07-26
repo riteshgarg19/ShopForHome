@@ -1,19 +1,35 @@
 package com.wipro.springboot.Entity;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
  
+@Table(name = "cart")
 @Entity
 public class Cart {
 	 private Integer id;
+	 
+	 @Column(name = "product_id")
 	 private Integer product_id;
+	 
+	 @Column(name = "item_name")
 	 private String item_name;
+	 
+	 @Column(name = "quantity")
 	 private String quantity;
+	 
+	 @Column(name = "product_price")
 	 private float product_price;
+	 
+	 @Column(name = "discount_amt")
 	 private float discount_amt;
+	 @Column(name = "img_url")
 	 private String img_url;
+	 
+	 @Column(name = "username")
+	 @OneToOne
 	 private String username;
 	 
 	 
@@ -91,7 +107,7 @@ public class Cart {
 
 
 	public void setDiscount_amt(float discount_amt) {
-		this.discount_amt = discount_amt;
+		this.discount_amt = 0;
 	}
 
 	public String getimg_url() {

@@ -49,7 +49,7 @@ export class AdminComponent implements OnInit {
         this.products = data;
       });
 
-      fetch(`http://localhost:8087/sales-log`, {
+      fetch(`http://localhost:8083/api/report`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

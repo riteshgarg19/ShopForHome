@@ -1,14 +1,15 @@
 package com.wipro.springboot.Entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
  
+@Table(name = "category")
 @Entity
 public class Category {
 	private Integer id;
+	
+	@Column(name = "category_name")
 	private String category_name;
+	@Column(name = "category_type")
 	private String category_type;
 	
 	

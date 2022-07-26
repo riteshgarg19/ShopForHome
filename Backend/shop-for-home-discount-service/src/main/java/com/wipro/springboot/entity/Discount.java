@@ -15,6 +15,9 @@ public class Discount {
 	@Id
 	@Column(name = "id")
 	private String id;
+	
+	private String coupon;
+	
 	@Column(name = "status")
 	private Long status;
 
@@ -36,6 +39,14 @@ public class Discount {
 
 	public Discount() {
 
+	}
+
+	public String getCoupon() {
+		return coupon;
+	}
+
+	public void setCoupon(String coupon) {
+		this.coupon = coupon;
 	}
 
 }

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ShopforhomeService } from '../shopforhome.service';
+import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-view-cart',
@@ -11,12 +15,18 @@ export class ViewCartComponent implements OnInit {
   crt: any;
   deleted: boolean = false;
   TotalPrice: number = 0;
+  selectedCoupon: string;
   sold: any = [];
   message: string | undefined;
   products: any = [];
   clearcart: boolean = false;
+  sub: Subscription;
+  coupon: any;
+  userSubscription: Subscription;
   
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private router: Router,private shopforhomeservice: ShopforhomeService) {
+    
+  }
 
   ngOnInit(): void {
     fetch(`http://localhost:8087/cart`, {
@@ -31,11 +41,42 @@ export class ViewCartComponent implements OnInit {
           return item.username == localStorage.getItem('user');
         });
         this.Carts = data;
+
         data.forEach((element: any) => {
           this.TotalPrice =
-            this.TotalPrice + (element.product_price - element.discount_amt);
+            this.TotalPrice + ((element.product_price - element.discount_amt)* element.quantity);
         });
       });
+
+      this.shopforhomeservice.getCoupon().subscribe((prods) => {
+        this.coupon = prods;
+      });
+
+
+
+
+  }
+
+  
+
+  UpdateQuantity = async (cartId:number, updatedQuantityValue: number) => {
+    const updatedItem = this.Carts.filter((item: any) => {
+      return item.id === cartId;
+    });
+
+    const data = {
+      ...updatedItem,
+      quantity: updatedQuantityValue,
+    };
+
+    await fetch(`http://localhost:8087/cart/${cartId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+    this.ngOnInit();
   }
 
   DeleteItem = async (id: number) => {
@@ -121,7 +162,7 @@ export class ViewCartComponent implements OnInit {
           this.Carts = [];
           this.TotalPrice = 0;
           this.deleted = true;
-          this.message = 'your Order has been placed';
+          this.message = 'Your Order has been placed';
           const d = new Date();
           const salelog = {
             
@@ -143,5 +184,11 @@ export class ViewCartComponent implements OnInit {
     setTimeout(() => {
       this.deleted = false;
     }, 3000);
+  
   };
+  getCoupon() {
+    this.shopforhomeservice.getCoupon().subscribe((prods) => {
+      this.coupon = prods;
+    });
+}
 }

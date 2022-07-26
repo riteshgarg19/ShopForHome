@@ -1,0 +1,27 @@
+<h1 class="display-4 text-center bg-light mb-5 font-weight-bold">Discount Coupons</h1>
+
+
+
+<form class="form-inline mb-2">
+  <input [(ngModel)]="coupon" type="text" class="form-control font-weight-bold form-control-lg" size="20" id="coupon"
+    name="coupon" placeholder="Enter coupon code">
+</form>
+<button (click)="addCoupon(coupon)" class="btn btn-success font-weight-bold btn-lg float-left">Add Coupon</button>
+
+<table id="table" class="table table-striped text-center h4">
+  <thead>
+    <tr>
+      <th scope="col">Couponcode</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let coupon of page?.content ">
+      <td class="align-middle">{{coupon.id}}</td>
+      <td class="align-middle">
+        <button (click)="deleteCoupon(coupon.id)" class="btn btn-outline-danger font-weight-bold btn-lg">Remove <i
+            class="fa fa-trash" aria-hidden="true"></i></button>
+      </td>
+  </tbody>
+</table>
+

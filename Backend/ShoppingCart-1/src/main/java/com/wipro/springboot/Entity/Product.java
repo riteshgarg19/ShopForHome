@@ -1,22 +1,34 @@
 package com.wipro.springboot.Entity;
 
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
  
+@Table(name = "product")
 @CrossOrigin("http://localhost:4200/")
 @Entity
 public class Product {
     private Integer id;
+    
+    @Column(name = "product_name")
     private String product_name;
+    
+    @Column(name = "product_type")
     private String product_type;
+    
+    @Column(name = "product_price")
     private String product_price;
+    @Column(name = "product_desc")
     private String product_desc;
+    @Column(name = "stocks")
     private String stocks;
+    @Column(name = "img_url")
     private String img_url;
 	public Product() {
 		super();

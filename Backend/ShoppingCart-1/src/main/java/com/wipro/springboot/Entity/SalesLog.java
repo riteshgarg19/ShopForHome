@@ -1,16 +1,31 @@
 package com.wipro.springboot.Entity;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
+@Table(name = "sales_log")
 @Entity
 public class SalesLog {
 	private Integer id;
+	
+	@Column(name = "username")
+	 @OneToOne
 	private String username;
+	
+	@Column(name = "product_name")
 	private String product_name;
+	
+	@Column(name = "product_price")
 	private Integer product_price;
+	
+	@Column(name = "quantity")
 	private Integer quantity;
+	
+	@Column(name = "date")
 	private String date;
 	
 	

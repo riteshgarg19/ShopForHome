@@ -1,18 +1,37 @@
 package com.wipro.springboot.Entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
+@Table(name = "wishlist")
 @Entity
 public class Wishlist {
     private Integer id;
+    
+    @Column(name = "name")
     private String name;
+    
+    @Column(name = "product_price")
     private float product_price;
+    
+    @Column(name = "quantity")
+    @OneToOne
     private int quantity;
+    
+    @Column(name = "total_amt")
     private float total_amt;
+    
+    @Column(name = "img_url")
+    @OneToOne
     private String img_url;
+    
+    @Column(name = "username")
+	 @OneToOne
 	 private String username;
 
 	public Wishlist() {

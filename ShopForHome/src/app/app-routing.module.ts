@@ -7,6 +7,7 @@ import { RegisterComponent } from './register/register.component';
 import { ViewCartComponent } from './view-cart/view-cart.component';
 import { ViewWishlistComponent } from './view-wishlist/view-wishlist.component';
 import { AdminComponent } from './admin/admin.component';
+import { DiscountComponent } from './discount/discount.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'viewcart', component: ViewCartComponent },
   { path: 'viewwishlist', component: ViewWishlistComponent },
   { path: 'admin', component: AdminComponent },
+  { path: 'discount', component: DiscountComponent },
 
 ];
 

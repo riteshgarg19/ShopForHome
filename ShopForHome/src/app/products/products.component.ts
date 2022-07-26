@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -25,14 +26,7 @@ export class ProductsComponent implements OnInit {
   constructor(private httpClient: HttpClient, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    // let response = this.httpClient.get('http://localhost:8087/products');
-    // response.subscribe((data) => (this.products = data));
-    // console.log(this.route.snapshot.paramMap.get('category'));
-    // this.products = this.products.filter((item: any) => {
-    //   console.log(item.product_type)
-    //   return item.product_type === this.route.snapshot.paramMap.get('category');
-    // });
-    // this.products = Array.of(this.products);
+    
 
     fetch(`http://localhost:8087/products`, {
       method: 'GET',
@@ -182,4 +176,9 @@ export class ProductsComponent implements OnInit {
       this.wishadded = false;
     }, 3000);
   };
+
+
+
+  
+
 }
